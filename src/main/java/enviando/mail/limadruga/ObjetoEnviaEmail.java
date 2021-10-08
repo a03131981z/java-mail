@@ -20,6 +20,13 @@ public class ObjetoEnviaEmail {
 	private String assuntoEmail = "";
 	private String textoEmail = "";
 	
+	public ObjetoEnviaEmail(String lista, String nome, String assunto, String texto) {
+		this.listaDestinatarios = lista;
+		this.nomeRemetente = nome;
+		this.assuntoEmail  = assunto;
+		this.textoEmail = texto;
+	}
+	
 	public void enviaEmail() throws MessagingException {
 	
 		Properties properties = new Properties();

@@ -6,7 +6,7 @@ public class AppTest {
     @org.junit.Test
     public void testeEmail() throws InterruptedException, MessagingException {
     	
-    	ObjetoEnviaEmail enviaEmail = new ObjetoEnviaEmail("mlindembergh@gmail.com", "Alex do JDev Treinamentos", "Testando e-mail com Java", "Esse texto é a descrição do meu e-mail");
+    	ObjetoEnviaEmail enviaEmail = new ObjetoEnviaEmail("mlindembergh@gmail.com, contato@jdevtreinamento.com.br", "Alex do JDev Treinamentos", "Testando e-mail com Java", "Esse texto é a descrição do meu e-mail");
     	
     	enviaEmail.enviaEmail();
     	/*Olhe as configurações smtp do seu email*/
