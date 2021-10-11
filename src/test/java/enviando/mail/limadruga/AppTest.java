@@ -1,8 +1,6 @@
 package enviando.mail.limadruga;
 import java.io.IOException;
 
-import javax.mail.MessagingException;
-
 public class AppTest {
     
     @org.junit.Test
