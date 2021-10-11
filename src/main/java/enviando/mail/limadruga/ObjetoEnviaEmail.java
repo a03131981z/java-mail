@@ -27,7 +27,7 @@ public class ObjetoEnviaEmail {
 		this.textoEmail = texto;
 	}
 	
-	public void enviaEmail() throws MessagingException {
+	public void enviarEmail(boolean envioHtml) throws MessagingException {
 	
 		Properties properties = new Properties();
 		properties.put("mail.smtp.ssl.trust", "*");
@@ -47,15 +47,21 @@ public class ObjetoEnviaEmail {
 		Address[] toUser = InternetAddress.parse(listaDestinatarios);
 		Message message = new MimeMessage(session);
 		try {
-			message.setFrom(new InternetAddress(userName, nomeRemetente));/*Quem está enviando*
+			message.setFrom(new InternetAddress(userName, nomeRemetente));/*Quem está enviando*/
 		} catch (UnsupportedEncodingException | MessagingException e) {
 			e.printStackTrace();
+		
+		}finally {
+			message.setRecipients(Message.RecipientType.TO, toUser);/*Email de destino*/
+			message.setSubject(assuntoEmail); /*Assunto do email*/
+			
+			if(envioHtml) {
+				message.setContent(textoEmail, "text/html; charset=utf-8");
+			}else {
+				message.setText(textoEmail);
+			}
+			
+			Transport.send(message);
 		}
-		
-		message.setRecipients(Message.RecipientType.TO, toUser);/*Email de destino*/
-		message.setSubject(assuntoEmail); /*Assunto do email*/
-		message.setText(textoEmail);
-		
-		Transport.send(message);
-	}
+	}	
 }
